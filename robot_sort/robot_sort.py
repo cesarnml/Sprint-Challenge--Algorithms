@@ -102,6 +102,7 @@ class SortingRobot:
         """
         Sort the robot's list.
         """
+    # Analogues to Selection Sort:
     # Pick up initial item ... Turn on light to indicate robot is sorting ...
     # move robot right ... comparing items and swapping if list item is smaller ... until end of list
     # now move robot left ... until robot finds none in list... place currently held item in none position
