@@ -105,6 +105,7 @@ class SortingRobot:
     # Analogues to Selection Sort:
     # Pick up initial item ... Turn on light to indicate robot is sorting ...
     # move robot right ... comparing items and swapping if list item is smaller ... until end of list
+    # ... you now have smallest item that hasn't yet been sorted
     # now move robot left ... until robot finds none in list... place currently held item in none position
     # move right one ... pick up item [setting new none position]... repeat compare/swapping algorithm
     # METHODS: move_left, move_right, swap_item, compare_item
@@ -116,14 +117,20 @@ class SortingRobot:
             while self.move_right():
                 if self.compare_item() == 1:
                     self.swap_item()
-            # If End of List and All Items Sorted Exit Condition:
-            if self.compare_item() is None and self.can_move_right() is False:
+            # at end of line,
+            # if item in list is None, list is sorted
+            # put last (and largest) item back in list
+            # turn off light ... list is sorted
+            if self.compare_item() is None:
                 # Place item back in list and turn light off to indicate list is sorted
                 self.swap_item()
                 self.set_light_off()
                 break
             else:
-                # Find None position ... Place item in None Position ... Move Right and Swap to set next None position
+                # Move Left,
+                # Find new None position ...
+                # Place item in None Position ...
+                # Move Right and Swap to set next None position
                 while self.move_left():
                     if (self.compare_item() is None):
                         self.swap_item()
